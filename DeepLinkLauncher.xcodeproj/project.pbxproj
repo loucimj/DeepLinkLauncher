@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		023BFC78838C06380EB1C3AA /* Pods_DeepLinkLauncher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDBF5DB0052B6A8E5362934 /* Pods_DeepLinkLauncher.framework */; };
+		41016D5D24D07C69005A262E /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41016D5C24D07C69005A262E /* Mocks.swift */; };
+		41016D5F24D08072005A262E /* ApplicationEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41016D5E24D08072005A262E /* ApplicationEvents.swift */; };
 		410DFD3F24CB6C3B00E482FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DFD3E24CB6C3B00E482FC /* AppDelegate.swift */; };
 		410DFD4124CB6C3B00E482FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DFD4024CB6C3B00E482FC /* SceneDelegate.swift */; };
 		410DFD4624CB6C3B00E482FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410DFD4424CB6C3B00E482FC /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 		04DF84265F1E516A9B20E4BE /* Pods-DeepLinkLauncher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepLinkLauncher.release.xcconfig"; path = "Target Support Files/Pods-DeepLinkLauncher/Pods-DeepLinkLauncher.release.xcconfig"; sourceTree = "<group>"; };
 		0682DBAFD0C776529D614180 /* Pods-DeepLinkLauncher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepLinkLauncher.debug.xcconfig"; path = "Target Support Files/Pods-DeepLinkLauncher/Pods-DeepLinkLauncher.debug.xcconfig"; sourceTree = "<group>"; };
 		08DF90BC50EF05C9A1D8C632 /* Pods_DeepLinkLauncherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepLinkLauncherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41016D5C24D07C69005A262E /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		41016D5E24D08072005A262E /* ApplicationEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationEvents.swift; sourceTree = "<group>"; };
 		410DFD3B24CB6C3B00E482FC /* DeepLinkLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepLinkLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		410DFD3E24CB6C3B00E482FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		410DFD4024CB6C3B00E482FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				41C2356024CB770F00BAFAE7 /* LauncherTests.swift */,
 				41C2355B24CB75C500BAFAE7 /* StorageManagerTests.swift */,
 				410DFD5724CB6C4000E482FC /* Info.plist */,
+				41016D5C24D07C69005A262E /* Mocks.swift */,
 			);
 			path = DeepLinkLauncherTests;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				41C2355E24CB76F300BAFAE7 /* Launcher.swift */,
+				41016D5E24D08072005A262E /* ApplicationEvents.swift */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -385,6 +391,7 @@
 				410DFD4124CB6C3B00E482FC /* SceneDelegate.swift in Sources */,
 				41C2356824CB78FD00BAFAE7 /* LauncherPresenter.swift in Sources */,
 				41C2356424CB77E200BAFAE7 /* HistoryPresenter.swift in Sources */,
+				41016D5F24D08072005A262E /* ApplicationEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +403,7 @@
 				41C2355C24CB75C500BAFAE7 /* StorageManagerTests.swift in Sources */,
 				41C2356624CB780200BAFAE7 /* HistoryPresenterTests.swift in Sources */,
 				41C2356124CB770F00BAFAE7 /* LauncherTests.swift in Sources */,
+				41016D5D24D07C69005A262E /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

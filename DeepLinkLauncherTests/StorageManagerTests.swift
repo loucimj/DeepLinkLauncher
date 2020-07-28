@@ -44,6 +44,14 @@ class StorageServiceTests: QuickSpec {
                 let urls = newService.getURLs()
                 expect(urls.first).to(equal(self.testURL))
             }
+            it("doesnt duplicate links") {
+                let service = StorageService()
+                service.removeAll()
+                service.add(url: self.testURL)
+                service.add(url: self.testURL)
+                let urls = service.getURLs()
+                expect(urls.count).to(equal(1))
+            }
             it("saves data properly from different threads") {
                 let group = DispatchGroup()
                 let service = StorageService()
