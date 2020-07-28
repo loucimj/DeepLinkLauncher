@@ -15,10 +15,22 @@ class LauncherTests: QuickSpec {
 
     override func spec() {
         it("launches a valid link") {
-            fail()
+            let launcher = Launcher()
+            do {
+                try launcher.launch(url: URL(string: "http://www.google.com")!)
+                expect(true).to(beTrue())
+            } catch {
+                fail()
+            }
         }
         it("fails to open a invalid link") {
-            fail()
+            let launcher = Launcher()
+            do {
+                try launcher.launch(url: URL(string: "whatsapp://something")!)
+                fail()
+            } catch {
+                expect(true).to(beTrue())
+            }
         }
         
     }
