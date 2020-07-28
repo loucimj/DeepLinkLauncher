@@ -14,7 +14,7 @@ import Nimble
 class StorageServiceTests: QuickSpec {
     var testURL: URL = URL(string: "http://google.com")!
     var testURL2: URL = URL(string: "http://apple.com")!
-    let group = DispatchGroup()
+    
     override func spec() {
         context("storage") {
             it("stores data properly") {
