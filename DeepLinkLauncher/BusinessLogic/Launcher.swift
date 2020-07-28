@@ -7,7 +7,17 @@
 //
 
 import Foundation
+import UIKit
+
+enum LauncherErrors: Error {
+    case ApplicationNotAvailable
+}
 
 class Launcher {
-    
+    func launch(url: URL) throws {
+        guard UIApplication.shared.canOpenURL(url) else {
+            throw LauncherErrors.ApplicationNotAvailable
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
 }
