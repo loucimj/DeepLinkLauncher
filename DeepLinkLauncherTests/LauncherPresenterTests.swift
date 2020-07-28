@@ -16,6 +16,8 @@ class LaunchPresenterDelegate: LauncherPresenterDelegate {
     var didLaunchLink: Bool = false
     var wantsToEditLink: Bool = false
     func linkIsInvalid(link: String) {
+        isValid = false
+        didLaunchLink = false
     }
     
     func didSaveLink(link: String) {
@@ -44,6 +46,7 @@ class LauncherPresenterTests: QuickSpec {
         }
         it("notifies when a link is invalid") {
             let presenter = LauncherPresenter(delegate: self.delegate, service: self.service)
+            self.delegate.isValid = true
             presenter.save(link: Mocks.invalidLink)
             expect(self.delegate.isValid).to(beFalse())
         }
@@ -54,11 +57,13 @@ class LauncherPresenterTests: QuickSpec {
         }
         it("fails to launch an invalid link") {
             let presenter = LauncherPresenter(delegate: self.delegate, service: self.service)
+            self.delegate.didLaunchLink = true
             presenter.launch(link: Mocks.invalidLink)
             expect(self.delegate.didLaunchLink).to(beFalse())
         }
         it("allows to edit a valid link") {
             let presenter = LauncherPresenter(delegate: self.delegate, service: self.service)
+            expect(presenter).notTo(beNil())
             self.delegate.wantsToEditLink = false
             let payload = ["link": Mocks.validLink]
             NotificationCenter.default.post(name: .editLink, object: nil, userInfo: payload)
@@ -66,6 +71,7 @@ class LauncherPresenterTests: QuickSpec {
         }
         it("fails to edit when event doesnt have link") {
             let presenter = LauncherPresenter(delegate: self.delegate, service: self.service)
+            expect(presenter).notTo(beNil())
             self.delegate.wantsToEditLink = false
             let payload: [String: Any] = [:]
             NotificationCenter.default.post(name: .editLink, object: nil, userInfo: payload)
