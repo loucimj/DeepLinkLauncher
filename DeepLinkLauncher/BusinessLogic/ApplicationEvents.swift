@@ -10,5 +10,4 @@ import Foundation
 
 extension Notification.Name {
     static let editLink = Notification.Name("editLink")
-    static let addedLink = Notification.Name("addedLink")
 }
