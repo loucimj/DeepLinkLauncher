@@ -23,5 +23,8 @@ class HistoryPresenterTests: QuickSpec {
         it("launches a link on demand") {
             fail()
         }
+        it("allows the user to select a link for editing") {
+            fail()
+        }
     }
 }

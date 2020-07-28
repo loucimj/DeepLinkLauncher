@@ -10,12 +10,72 @@ import Foundation
 
 fileprivate class StorageManagerData {
     static var shared = StorageManagerData()
+    
     lazy var queue: DispatchQueue = {
         let queue = DispatchQueue(label: "storageQueue")
         return queue
     }()
+    private lazy var dataMangementuQeue: DispatchQueue = {
+        let queue = DispatchQueue(label: "dataManagementQueue")
+        return queue
+    }()
+    private var urls: Set<URL> = []
+    private let storageKey = "urls"
+    init() {
+        readSavedURLs()
+    }
+    func insert(url: URL) {
+        queue.sync {
+            urls.insert(url)
+            saveURLs()
+        }
+    }
+    func getURLs() -> Array<URL> {
+        queue.sync {
+            return Array(urls)
+        }
+    }
+    func remove(url: URL) {
+        _ = queue.sync {
+            urls.remove(url)
+        }
+    }
+    private func saveURLs() {
+        dataMangementuQeue.sync {
+            let values = urls.map( { $0.absoluteString })
+            UserDefaults.standard.setValue(values, forKey: storageKey)
+        }
+    }
+    private func readSavedURLs() {
+        dataMangementuQeue.sync {
+            guard let storedURLs = UserDefaults.standard.array(forKey: storageKey) as? Array<String> else { return }
+            urls = Set(storedURLs.map({ URL(string: $0)! }))
+        }
+    }
+    func resetStorage() {
+        urls = []
+    }
 }
 
-class StorageManager {
-    
+protocol StorageManager {
+    func add(url: URL)
+    func getURLs() -> Array<URL>
+    func remove(url: URL)
+    func removeAll()
+}
+
+class StorageService: StorageManager {
+    public func add(url: URL) {
+        StorageManagerData.shared.insert(url: url)
+    }
+    func getURLs() -> Array<URL> {
+        return StorageManagerData.shared.getURLs()
+    }
+    func remove(url: URL) {
+        StorageManagerData.shared.remove(url: url)
+    }
+    func removeAll() {
+        StorageManagerData.shared.resetStorage()
+    }
+
 }

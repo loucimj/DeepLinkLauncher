@@ -22,6 +22,9 @@ class LauncherPresenterTests: QuickSpec {
         it("launches a link on demand") {
             fail()
         }
+        it("allows to edit a link") {
+            fail()
+        }
     }
 
 }
