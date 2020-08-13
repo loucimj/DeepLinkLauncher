@@ -12,11 +12,14 @@ import UIKit
 class TabBarController: UITabBarController {
     lazy var tabViewControllers: [UIViewController] = {
         return [
-            LinkLauncherViewController(),
+            UINavigationController(rootViewController: LinkLauncherViewController()),
             HistoryViewController()
         ]
     }()
     override func viewDidLoad() {
         setViewControllers(tabViewControllers, animated: true)
+        tabBar.tintColor = UIColor.tabbarText
+        tabBar.barTintColor = UIColor.tabbarBackground
+        tabBar.isTranslucent = false
     }
 }

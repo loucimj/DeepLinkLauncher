@@ -15,6 +15,9 @@
 		410DFD4624CB6C3B00E482FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410DFD4424CB6C3B00E482FC /* Main.storyboard */; };
 		410DFD4824CB6C3F00E482FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410DFD4724CB6C3F00E482FC /* Assets.xcassets */; };
 		410DFD4B24CB6C3F00E482FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410DFD4924CB6C3F00E482FC /* LaunchScreen.storyboard */; };
+		412D323924E5CAF80069386F /* OutlinedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D323824E5CAF80069386F /* OutlinedButton.swift */; };
+		412D323B24E5D3DA0069386F /* UIColor+Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D323A24E5D3DA0069386F /* UIColor+Local.swift */; };
+		412D323D24E5EA240069386F /* UIFont+Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D323C24E5EA240069386F /* UIFont+Local.swift */; };
 		41C2355324CB738D00BAFAE7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2355224CB738D00BAFAE7 /* TabBarController.swift */; };
 		41C2355524CB739D00BAFAE7 /* LinkLauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2355424CB739D00BAFAE7 /* LinkLauncherViewController.swift */; };
 		41C2355724CB73AC00BAFAE7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2355624CB73AC00BAFAE7 /* HistoryViewController.swift */; };
@@ -54,6 +57,9 @@
 		410DFD4C24CB6C3F00E482FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		410DFD5124CB6C3F00E482FC /* DeepLinkLauncherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeepLinkLauncherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		410DFD5724CB6C4000E482FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		412D323824E5CAF80069386F /* OutlinedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedButton.swift; sourceTree = "<group>"; };
+		412D323A24E5D3DA0069386F /* UIColor+Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Local.swift"; sourceTree = "<group>"; };
+		412D323C24E5EA240069386F /* UIFont+Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Local.swift"; sourceTree = "<group>"; };
 		41C2355224CB738D00BAFAE7 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		41C2355424CB739D00BAFAE7 /* LinkLauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLauncherViewController.swift; sourceTree = "<group>"; };
 		41C2355624CB73AC00BAFAE7 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +130,7 @@
 		410DFD3D24CB6C3B00E482FC /* DeepLinkLauncher */ = {
 			isa = PBXGroup;
 			children = (
+				412D323624E5CABC0069386F /* UI */,
 				410DFD3E24CB6C3B00E482FC /* AppDelegate.swift */,
 				410DFD4724CB6C3F00E482FC /* Assets.xcassets */,
 				41C2355D24CB76DC00BAFAE7 /* BusinessLogic */,
@@ -149,6 +156,24 @@
 				41016D5C24D07C69005A262E /* Mocks.swift */,
 			);
 			path = DeepLinkLauncherTests;
+			sourceTree = "<group>";
+		};
+		412D323624E5CABC0069386F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				412D323724E5CACC0069386F /* Buttons */,
+				412D323A24E5D3DA0069386F /* UIColor+Local.swift */,
+				412D323C24E5EA240069386F /* UIFont+Local.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		412D323724E5CACC0069386F /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				412D323824E5CAF80069386F /* OutlinedButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		41C2355124CB6CCA00BAFAE7 /* ViewControllers */ = {
@@ -386,10 +411,13 @@
 				41C2355324CB738D00BAFAE7 /* TabBarController.swift in Sources */,
 				41C2355724CB73AC00BAFAE7 /* HistoryViewController.swift in Sources */,
 				41C2355A24CB757D00BAFAE7 /* StorageManager.swift in Sources */,
+				412D323924E5CAF80069386F /* OutlinedButton.swift in Sources */,
 				410DFD3F24CB6C3B00E482FC /* AppDelegate.swift in Sources */,
+				412D323D24E5EA240069386F /* UIFont+Local.swift in Sources */,
 				41C2355F24CB76F300BAFAE7 /* Launcher.swift in Sources */,
 				410DFD4124CB6C3B00E482FC /* SceneDelegate.swift in Sources */,
 				41C2356824CB78FD00BAFAE7 /* LauncherPresenter.swift in Sources */,
+				412D323B24E5D3DA0069386F /* UIColor+Local.swift in Sources */,
 				41C2356424CB77E200BAFAE7 /* HistoryPresenter.swift in Sources */,
 				41016D5F24D08072005A262E /* ApplicationEvents.swift in Sources */,
 			);
