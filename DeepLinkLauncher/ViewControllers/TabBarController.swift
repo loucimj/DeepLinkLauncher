@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
     lazy var tabViewControllers: [UIViewController] = {
         return [
             UINavigationController(rootViewController: LinkLauncherViewController()),
-            HistoryViewController()
+            UINavigationController(rootViewController: HistoryViewController())
         ]
     }()
     override func viewDidLoad() {
