@@ -17,6 +17,9 @@ class LinkLauncherViewController: UIViewController {
             self.open()
         }
     }()
+    private lazy var textField: GrowingTextField = {
+        return GrowingTextField(image: UIImage.link, placeholderText: "Type your link here", defaultText: "")
+    }()
     
     override func viewDidLoad() {
         setupNavigationBar()
@@ -26,7 +29,9 @@ class LinkLauncherViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = UIColor.systemBackground
         view.addSubview(button)
+        view.addSubview(textField)
         button.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 0, left: 24, bottom: 32, right: 24), excludingEdge: .top)
+        textField.autoPinEdgesToSuperviewSafeArea(with: UIEdgeInsets(top: 12, left: 24, bottom: 0, right: 24), excludingEdge: .bottom)
     }
     private func setupNavigationBar() {
         title = "Launcher"
