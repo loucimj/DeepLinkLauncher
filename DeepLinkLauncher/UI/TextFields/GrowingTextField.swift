@@ -16,6 +16,9 @@ class GrowingTextField: UIView {
         textView.backgroundColor = UIColor.clear
         textView.font = UIFont.textField
         textView.textColor = UIColor.textFieldTextColor
+        textView.autocorrectionType = .no
+        textView.autocapitalizationType = .none
+        textView.returnKeyType = UIReturnKeyType.go
         textView.delegate = self
         return textView
     }()
@@ -30,12 +33,20 @@ class GrowingTextField: UIView {
     private var image: UIImage
     private var placeholderText: String
     private var textFieldHeightConstraint: NSLayoutConstraint?
+    private var textFieldTopConstraint: NSLayoutConstraint?
+    
     private enum State {
         case waiting
         case writing
     }
+    private var isMultilineText: Bool {
+        (textFieldHeightConstraint?.constant ?? 24) > 24
+    }
     private var state: State {
         return textView.text.isEmpty ? .waiting : .writing
+    }
+    var text: String? {
+        textView.text
     }
     private lazy var containerView: UIView = {
         let view = UIView(forAutoLayout: ())
@@ -73,26 +84,31 @@ class GrowingTextField: UIView {
         imageView.autoPinEdge(.leading, to: .leading, of: containerView, withOffset: 16)
 
         placeHolderLabel.autoPinEdge(.leading, to: .trailing, of: imageView, withOffset: 16)
-        placeHolderLabel.autoPinEdge(.top, to: .top, of: containerView, withOffset: -8)
+        placeHolderLabel.autoPinEdge(.top, to: .top, of: imageView, withOffset: 2)
         placeHolderLabel.autoPinEdge(.trailing, to: .trailing, of: containerView, withOffset: -12)
-        placeHolderLabel.autoPinEdge(.bottom, to: .bottom, of: containerView, withOffset: 8)
 
-        textView.autoPinEdge(.top, to: .top, of: containerView, withOffset: 16)
         textView.autoPinEdge(.leading, to: .trailing, of: imageView, withOffset: 12)
         textView.autoPinEdge(.trailing, to: .trailing, of: containerView, withOffset: -12)
     
         textFieldHeightConstraint = textView.heightAnchor.constraint(equalToConstant: 24)
         textFieldHeightConstraint?.isActive = true
-
-        containerView.autoPinEdge(.bottom, to: .bottom, of: textView, withOffset: 12)
+        textFieldTopConstraint = textView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16)
+        textFieldTopConstraint?.isActive = true
+        
+        containerView.bottomAnchor.constraint(greaterThanOrEqualTo: textView.bottomAnchor, constant: 12).isActive = true
+        containerView.bottomAnchor.constraint(greaterThanOrEqualTo: placeHolderLabel.bottomAnchor, constant: 18).isActive = true
         containerView.autoPinEdgesToSuperviewSafeArea(with: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }
     private func updateViewsStatus() {
         switch state {
         case .writing:
-            placeHolderLabel.isHidden = true
+            placeHolderLabel.alpha = 0
+            self.textFieldTopConstraint?.constant = isMultilineText ? 4 : 12
+            self.layoutIfNeeded()
         case .waiting:
-            placeHolderLabel.isHidden = false
+            placeHolderLabel.alpha = 1
+            self.textFieldTopConstraint?.constant = 16
+            self.layoutIfNeeded()
         }
     }
     private func updateHeightConstraint() {
@@ -115,7 +131,10 @@ extension GrowingTextField: UITextViewDelegate {
         updateViewsStatus()
         updateHeightConstraint()
     }
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
         return true
     }
 }

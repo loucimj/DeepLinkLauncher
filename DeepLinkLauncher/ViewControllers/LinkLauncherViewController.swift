@@ -21,9 +21,12 @@ class LinkLauncherViewController: UIViewController {
         return GrowingTextField(image: UIImage.link, placeholderText: "Type your link here", defaultText: "")
     }()
     
+    private var launcherPresenter: LauncherPresenter?
+        
     override func viewDidLoad() {
         setupNavigationBar()
         setupViews()
+        launcherPresenter = LauncherPresenter(delegate: self)
     }
     // MARK: - Functions
     private func setupViews() {
@@ -40,6 +43,22 @@ class LinkLauncherViewController: UIViewController {
     }
     // MARK: - Actions
     private func open() {
+        guard let link = textField.text, !link.isEmpty else { return }
+        launcherPresenter?.launch(link: link)
+    }
+}
+extension LinkLauncherViewController: LauncherPresenterDelegate {
+    func linkIsInvalid(link: String) {
+        print("invalid "+link)
+    }
+    
+    func didSaveLink(link: String) {
         
     }
+    
+    func didLaunchLink(link: String) {
+        
+    }
+    
+    
 }

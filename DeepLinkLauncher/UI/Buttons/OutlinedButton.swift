@@ -68,6 +68,7 @@ class OutlinedButton: UIView {
         self.autoSetDimension(.height, toSize: 52)
     }
     private func setupActions() {
+        labelView.isUserInteractionEnabled = true
         labelView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(triggerAction)))
     }
     @objc private func triggerAction() {
