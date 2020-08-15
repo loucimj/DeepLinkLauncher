@@ -18,7 +18,7 @@ class LinkLauncherViewController: UIViewController {
         }
     }()
     private lazy var textField: GrowingTextField = {
-        return GrowingTextField(image: UIImage(systemName: "link")!, placeholderText: "Type your link here", defaultText: "")
+        return GrowingTextField(image: UIImage.link, placeholderText: "Type your link here", defaultText: "")
     }()
     
     override func viewDidLoad() {
