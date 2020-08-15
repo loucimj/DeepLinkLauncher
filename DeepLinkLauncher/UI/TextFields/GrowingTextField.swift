@@ -30,12 +30,20 @@ class GrowingTextField: UIView {
     private var image: UIImage
     private var placeholderText: String
     private var textFieldHeightConstraint: NSLayoutConstraint?
+    private var textFieldTopConstraint: NSLayoutConstraint?
+    
     private enum State {
         case waiting
         case writing
     }
+    private var isMultilineText: Bool {
+        (textFieldHeightConstraint?.constant ?? 24) > 24
+    }
     private var state: State {
         return textView.text.isEmpty ? .waiting : .writing
+    }
+    var text: String? {
+        textView.text
     }
     private lazy var containerView: UIView = {
         let view = UIView(forAutoLayout: ())
@@ -77,12 +85,13 @@ class GrowingTextField: UIView {
         placeHolderLabel.autoPinEdge(.trailing, to: .trailing, of: containerView, withOffset: -12)
         placeHolderLabel.autoPinEdge(.bottom, to: .bottom, of: containerView, withOffset: 8)
 
-        textView.autoPinEdge(.top, to: .top, of: containerView, withOffset: 16)
         textView.autoPinEdge(.leading, to: .trailing, of: imageView, withOffset: 12)
         textView.autoPinEdge(.trailing, to: .trailing, of: containerView, withOffset: -12)
     
         textFieldHeightConstraint = textView.heightAnchor.constraint(equalToConstant: 24)
         textFieldHeightConstraint?.isActive = true
+        textFieldTopConstraint = textView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16)
+        textFieldTopConstraint?.isActive = true
 
         containerView.autoPinEdge(.bottom, to: .bottom, of: textView, withOffset: 12)
         containerView.autoPinEdgesToSuperviewSafeArea(with: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
@@ -91,8 +100,12 @@ class GrowingTextField: UIView {
         switch state {
         case .writing:
             placeHolderLabel.isHidden = true
+            self.textFieldTopConstraint?.constant = isMultilineText ? 4 : 12
+            self.layoutIfNeeded()
         case .waiting:
             placeHolderLabel.isHidden = false
+            self.textFieldTopConstraint?.constant = 16
+            self.layoutIfNeeded()
         }
     }
     private func updateHeightConstraint() {
