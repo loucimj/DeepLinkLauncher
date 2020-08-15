@@ -22,4 +22,13 @@ extension UIColor {
     static var tabbarText: UIColor {
         return UIColor(named: "TabBarTextColor") ?? UIColor.white
     }
+    static var placeholderText: UIColor {
+        return UIColor(named: "PlaceholderTextColor") ?? UIColor.white
+    }
+    static var textFieldBackground: UIColor {
+        return UIColor(named: "TextFieldBackgroundColor") ?? UIColor.white
+    }
+    static var textFieldTextColor: UIColor {
+        return UIColor(named: "NormalTextColor") ?? UIColor.black
+    }
 }

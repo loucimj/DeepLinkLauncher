@@ -13,11 +13,12 @@
 		410DFD3F24CB6C3B00E482FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DFD3E24CB6C3B00E482FC /* AppDelegate.swift */; };
 		410DFD4124CB6C3B00E482FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DFD4024CB6C3B00E482FC /* SceneDelegate.swift */; };
 		410DFD4624CB6C3B00E482FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410DFD4424CB6C3B00E482FC /* Main.storyboard */; };
-		410DFD4824CB6C3F00E482FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410DFD4724CB6C3F00E482FC /* Assets.xcassets */; };
 		410DFD4B24CB6C3F00E482FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410DFD4924CB6C3F00E482FC /* LaunchScreen.storyboard */; };
 		412D323924E5CAF80069386F /* OutlinedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D323824E5CAF80069386F /* OutlinedButton.swift */; };
 		412D323B24E5D3DA0069386F /* UIColor+Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D323A24E5D3DA0069386F /* UIColor+Local.swift */; };
 		412D323D24E5EA240069386F /* UIFont+Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D323C24E5EA240069386F /* UIFont+Local.swift */; };
+		412D324024E5EBBD0069386F /* GrowingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412D323F24E5EBBD0069386F /* GrowingTextField.swift */; };
+		41BBC6F024E80D60009312DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410DFD4724CB6C3F00E482FC /* Assets.xcassets */; };
 		41C2355324CB738D00BAFAE7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2355224CB738D00BAFAE7 /* TabBarController.swift */; };
 		41C2355524CB739D00BAFAE7 /* LinkLauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2355424CB739D00BAFAE7 /* LinkLauncherViewController.swift */; };
 		41C2355724CB73AC00BAFAE7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C2355624CB73AC00BAFAE7 /* HistoryViewController.swift */; };
@@ -60,6 +61,7 @@
 		412D323824E5CAF80069386F /* OutlinedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedButton.swift; sourceTree = "<group>"; };
 		412D323A24E5D3DA0069386F /* UIColor+Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Local.swift"; sourceTree = "<group>"; };
 		412D323C24E5EA240069386F /* UIFont+Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Local.swift"; sourceTree = "<group>"; };
+		412D323F24E5EBBD0069386F /* GrowingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingTextField.swift; sourceTree = "<group>"; };
 		41C2355224CB738D00BAFAE7 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		41C2355424CB739D00BAFAE7 /* LinkLauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLauncherViewController.swift; sourceTree = "<group>"; };
 		41C2355624CB73AC00BAFAE7 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +132,6 @@
 		410DFD3D24CB6C3B00E482FC /* DeepLinkLauncher */ = {
 			isa = PBXGroup;
 			children = (
-				412D323624E5CABC0069386F /* UI */,
 				410DFD3E24CB6C3B00E482FC /* AppDelegate.swift */,
 				410DFD4724CB6C3F00E482FC /* Assets.xcassets */,
 				41C2355D24CB76DC00BAFAE7 /* BusinessLogic */,
@@ -138,6 +139,7 @@
 				410DFD4924CB6C3F00E482FC /* LaunchScreen.storyboard */,
 				410DFD4424CB6C3B00E482FC /* Main.storyboard */,
 				410DFD4024CB6C3B00E482FC /* SceneDelegate.swift */,
+				412D323624E5CABC0069386F /* UI */,
 				41C2355824CB753600BAFAE7 /* Storage */,
 				41C2355124CB6CCA00BAFAE7 /* ViewControllers */,
 				41C2356224CB77CD00BAFAE7 /* Presenters */,
@@ -161,6 +163,7 @@
 		412D323624E5CABC0069386F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				412D323E24E5EBA80069386F /* TextFields */,
 				412D323724E5CACC0069386F /* Buttons */,
 				412D323A24E5D3DA0069386F /* UIColor+Local.swift */,
 				412D323C24E5EA240069386F /* UIFont+Local.swift */,
@@ -174,6 +177,14 @@
 				412D323824E5CAF80069386F /* OutlinedButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		412D323E24E5EBA80069386F /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				412D323F24E5EBBD0069386F /* GrowingTextField.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 		41C2355124CB6CCA00BAFAE7 /* ViewControllers */ = {
@@ -270,7 +281,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Javier Loucim";
 				TargetAttributes = {
 					410DFD3A24CB6C3B00E482FC = {
@@ -307,7 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				410DFD4B24CB6C3F00E482FC /* LaunchScreen.storyboard in Resources */,
-				410DFD4824CB6C3F00E482FC /* Assets.xcassets in Resources */,
+				41BBC6F024E80D60009312DC /* Assets.xcassets in Resources */,
 				410DFD4624CB6C3B00E482FC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41C2355524CB739D00BAFAE7 /* LinkLauncherViewController.swift in Sources */,
+				412D324024E5EBBD0069386F /* GrowingTextField.swift in Sources */,
 				41C2355324CB738D00BAFAE7 /* TabBarController.swift in Sources */,
 				41C2355724CB73AC00BAFAE7 /* HistoryViewController.swift in Sources */,
 				41C2355A24CB757D00BAFAE7 /* StorageManager.swift in Sources */,
@@ -491,6 +503,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -551,6 +564,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

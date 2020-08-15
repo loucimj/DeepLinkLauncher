@@ -39,7 +39,7 @@ class OutlinedButton: UIView {
         label.text = self.text
         label.textColor = self.style.color
         label.textAlignment = .center
-        label.font = UIFont.buttonFont
+        label.font = UIFont.button
         return label
     }()
     private var callback: (()->())
