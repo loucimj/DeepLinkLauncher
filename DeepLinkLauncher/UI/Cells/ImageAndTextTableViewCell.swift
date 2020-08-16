@@ -48,7 +48,7 @@ class ImageAndTextTableViewCell: UITableViewCell, Reusable {
         
         cellTitleLabel.autoPinEdge(.leading, to: .trailing, of: cellImageView, withOffset: 16)
         cellTitleLabel.autoPinEdge(.top, to: .top, of: cellImageView, withOffset: 2)
-        cellTitleLabel.autoPinEdge(toSuperviewEdge: .trailing, withInset: -12)
+        cellTitleLabel.autoPinEdge(toSuperviewEdge: .trailing, withInset: 24)
         cellTitleLabel.autoPinEdge(toSuperviewEdge: .bottom, withInset: 12)
     }
     func configure(with item: ImageAndTextTableViewCellRepresentable) {
