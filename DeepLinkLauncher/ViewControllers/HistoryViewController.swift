@@ -101,6 +101,8 @@ extension HistoryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let url = urls[indexPath.row]
         launcherPresenter?.launch(link: url.absoluteString)
+        tableView.deselectRow(at: indexPath, animated: true)
+
     }
     
 }
@@ -130,7 +132,6 @@ extension HistoryViewController: LauncherPresenterDelegate {
     }
     
     func didLaunchLink(link: String) {
-        
     }
     
     

@@ -58,6 +58,7 @@ extension LinkLauncherViewController: LauncherPresenterDelegate {
     
     func didLaunchLink(link: String) {
         launcherPresenter?.save(link: link)
+        NotificationCenter.default.post(name: .didLaunchLink, object: nil)
     }
     
     
