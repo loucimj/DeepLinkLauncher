@@ -46,9 +46,12 @@ fileprivate class MockLauncherPresenterDelegate: LauncherPresenterDelegate {
 }
 
 class HistoryPresenterTests: QuickSpec {
-
     
     override func spec() {
+        beforeSuite {
+            let service = StorageService()
+            service.removeAll()
+        }
         it("reads all links stored") {
             let delegate = MockHistoryPresenterDelegate()
             let service = StorageService()
@@ -127,6 +130,10 @@ class HistoryPresenterTests: QuickSpec {
             presenter.readURLs()
             
             expect(delegate.urls.count).to(equal(0))
+        }
+        afterSuite {
+            let service = StorageService()
+            service.removeAll()
         }
     }
 }
