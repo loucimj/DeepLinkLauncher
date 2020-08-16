@@ -19,14 +19,15 @@ fileprivate class StorageManagerData {
         let queue = DispatchQueue(label: "dataManagementQueue")
         return queue
     }()
-    private var urls: Set<URL> = []
+    private var urls: [URL] = []
     private let storageKey = "urls"
     init() {
         readSavedURLs()
     }
     func insert(url: URL) {
+        guard !urls.contains(url) else { return }
         queue.sync {
-            urls.insert(url)
+            urls.insert(url, at: 0)
             saveURLs()
         }
     }
@@ -36,8 +37,8 @@ fileprivate class StorageManagerData {
         }
     }
     func remove(url: URL) {
-        _ = queue.sync {
-            urls.remove(url)
+        queue.sync {
+            urls = urls.filter({ $0 != url})
         }
     }
     private func saveURLs() {
@@ -49,7 +50,7 @@ fileprivate class StorageManagerData {
     private func readSavedURLs() {
         dataMangementuQeue.sync {
             guard let storedURLs = UserDefaults.standard.array(forKey: storageKey) as? Array<String> else { return }
-            urls = Set(storedURLs.map({ URL(string: $0)! }))
+            urls = storedURLs.map({ URL(string: $0)! })
         }
     }
     func resetStorage() {
