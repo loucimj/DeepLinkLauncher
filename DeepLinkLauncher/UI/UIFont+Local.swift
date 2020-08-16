@@ -19,4 +19,7 @@ extension UIFont {
     static var textField: UIFont {
         return placeholder
     }
+    static var cellTitle: UIFont {
+        return placeholder
+    }
 }

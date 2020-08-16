@@ -19,6 +19,7 @@ class GrowingTextField: UIView {
         textView.autocorrectionType = .no
         textView.autocapitalizationType = .none
         textView.returnKeyType = UIReturnKeyType.go
+        textView.isScrollEnabled = false
         textView.delegate = self
         return textView
     }()
@@ -34,16 +35,16 @@ class GrowingTextField: UIView {
     private var placeholderText: String
     private var textFieldHeightConstraint: NSLayoutConstraint?
     private var textFieldTopConstraint: NSLayoutConstraint?
-    
     private enum State {
         case waiting
         case writing
     }
-    private var isMultilineText: Bool {
-        (textFieldHeightConstraint?.constant ?? 24) > 24
-    }
     private var state: State {
         return textView.text.isEmpty ? .waiting : .writing
+    }
+    struct Heights {
+        static var minimumTextViewHeight: CGFloat = 37
+        static var defaultTextViewHeight: CGFloat = 30
     }
     var text: String? {
         textView.text
@@ -90,9 +91,9 @@ class GrowingTextField: UIView {
         textView.autoPinEdge(.leading, to: .trailing, of: imageView, withOffset: 12)
         textView.autoPinEdge(.trailing, to: .trailing, of: containerView, withOffset: -12)
     
-        textFieldHeightConstraint = textView.heightAnchor.constraint(equalToConstant: 24)
+        textFieldHeightConstraint = textView.heightAnchor.constraint(equalToConstant: Heights.defaultTextViewHeight)
         textFieldHeightConstraint?.isActive = true
-        textFieldTopConstraint = textView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16)
+        textFieldTopConstraint = textView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 6)
         textFieldTopConstraint?.isActive = true
         
         containerView.bottomAnchor.constraint(greaterThanOrEqualTo: textView.bottomAnchor, constant: 12).isActive = true
@@ -103,11 +104,9 @@ class GrowingTextField: UIView {
         switch state {
         case .writing:
             placeHolderLabel.alpha = 0
-            self.textFieldTopConstraint?.constant = isMultilineText ? 4 : 12
             self.layoutIfNeeded()
         case .waiting:
             placeHolderLabel.alpha = 1
-            self.textFieldTopConstraint?.constant = 16
             self.layoutIfNeeded()
         }
     }
@@ -115,11 +114,11 @@ class GrowingTextField: UIView {
         var size = CGSize.zero
         if state == .writing {
             size = textView.sizeThatFits(CGSize(width: textView.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
-            if size.height < 37 {
-                size.height = 24
+            if size.height < Heights.minimumTextViewHeight {
+                size.height = Heights.defaultTextViewHeight
             }
         } else {
-            size.height = 24
+            size.height = Heights.defaultTextViewHeight
         }
         self.textFieldHeightConstraint?.constant = size.height
         self.layoutIfNeeded()

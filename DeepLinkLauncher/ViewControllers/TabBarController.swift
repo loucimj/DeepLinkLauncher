@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
     lazy var tabViewControllers: [UIViewController] = {
         return [
             UINavigationController(rootViewController: LinkLauncherViewController()),
-            HistoryViewController()
+            UINavigationController(rootViewController: HistoryViewController())
         ]
     }()
     override func viewDidLoad() {
@@ -22,4 +22,22 @@ class TabBarController: UITabBarController {
         tabBar.barTintColor = UIColor.tabbarBackground
         tabBar.isTranslucent = false
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(didLaunchLink), name: .didLaunchLink, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(editLink), name: .editLink, object: nil)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - Events
+    @objc private func didLaunchLink() {
+        selectedIndex = 1
+    }
+    @objc private func editLink() {
+        selectedIndex = 0
+    }
 }
+

@@ -13,4 +13,7 @@ extension UIImage {
     static var link: UIImage {
          UIImage(systemName: "link", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .medium)) ?? UIImage()
     }
+    static var history: UIImage {
+         UIImage(systemName: "list.dash", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .medium)) ?? UIImage()
+    }
 }
