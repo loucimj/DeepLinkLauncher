@@ -21,7 +21,7 @@ extension URL: ImageAndTextTableViewCellRepresentable {
     
 }
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: UIViewController, Alertable {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(forAutoLayout: ())
@@ -107,6 +107,14 @@ extension HistoryViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 extension HistoryViewController: HistoryPresenterDelegate {
+    func didRemove(url: URL) {
+        showAlertWithSucccess(message: "Deleted " + url.absoluteString)
+    }
+    
+    func didRemoveAllLinks() {
+        showAlertWithSucccess(message: "Deleted all links")
+    }
+    
     func didReceiveUrls(urls: [URL]) {
         self.urls = urls
         tableView.reloadData()
