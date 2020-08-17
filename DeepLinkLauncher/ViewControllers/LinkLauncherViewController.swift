@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LinkLauncherViewController: UIViewController {
+class LinkLauncherViewController: UIViewController, Alertable {
     
     private lazy var button: OutlinedButton = {
         return OutlinedButton(text: "Open") { [weak self] in
@@ -49,7 +49,7 @@ class LinkLauncherViewController: UIViewController {
 }
 extension LinkLauncherViewController: LauncherPresenterDelegate {
     func linkIsInvalid(link: String) {
-        print("invalid "+link)
+        showAlertWithError(message: "Invalid link")
     }
     
     func didSaveLink(link: String) {
@@ -58,6 +58,7 @@ extension LinkLauncherViewController: LauncherPresenterDelegate {
     
     func didLaunchLink(link: String) {
         launcherPresenter?.save(link: link)
+        showAlertWithSucccess(message: "Launched")
         NotificationCenter.default.post(name: .didLaunchLink, object: nil)
     }
     

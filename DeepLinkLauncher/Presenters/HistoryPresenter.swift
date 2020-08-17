@@ -12,6 +12,8 @@ protocol HistoryPresenterDelegate {
     func didReceiveUrls(urls: [URL])
     func didLaunchLink(url: URL)
     func didHaveAnErrorLaunching(url: URL)
+    func didRemove(url: URL)
+    func didRemoveAllLinks()
 }
 
 class HistoryPresenter {
@@ -47,9 +49,12 @@ class HistoryPresenter {
     }
     func remove(url: URL) {
         service.remove(url: url)
+        delegate.didRemove(url: url)
     }
     func removeAll() {
+        guard !service.getURLs().isEmpty else { return }
         service.removeAll()
+        delegate.didRemoveAllLinks()
     }
     
 }

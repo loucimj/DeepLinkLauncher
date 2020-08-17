@@ -7,6 +7,7 @@ target 'DeepLinkLauncher' do
   pod 'PureLayout'
   pod 'IQKeyboardManagerSwift'
   pod 'Bugsnag'
+  pod 'StatusAlert', '~> 1.1.1'
   
   # Pods for DeepLinkLauncher
 
