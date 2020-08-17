@@ -27,6 +27,7 @@ class LinkLauncherViewController: UIViewController, Alertable {
         setupNavigationBar()
         setupViews()
         launcherPresenter = LauncherPresenter(delegate: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(editLink(_:)), name: .editLink, object: nil)
     }
     // MARK: - Functions
     private func setupViews() {
@@ -45,6 +46,13 @@ class LinkLauncherViewController: UIViewController, Alertable {
     private func open() {
         guard let link = textField.text, !link.isEmpty else { return }
         launcherPresenter?.launch(link: link)
+    }
+    @objc private func editLink(_ notification: Notification) {
+        guard let link = notification.userInfo?["link"] as? String else { return }
+        textField.setText(text: link)
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 extension LinkLauncherViewController: LauncherPresenterDelegate {

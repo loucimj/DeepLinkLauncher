@@ -25,4 +25,7 @@ extension UIImage {
     static var delete: UIImage {
          UIImage(systemName: "trash", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .medium)) ?? UIImage()
     }
+    static var edit: UIImage {
+         UIImage(systemName: "pencil", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .medium)) ?? UIImage()
+    }
 }

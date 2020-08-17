@@ -49,6 +49,10 @@ class GrowingTextField: UIView {
     var text: String? {
         textView.text
     }
+    func setText(text: String) {
+        textView.text = text
+        textViewDidChange(textView)
+    }
     private lazy var containerView: UIView = {
         let view = UIView(forAutoLayout: ())
         view.layer.cornerRadius = 12
