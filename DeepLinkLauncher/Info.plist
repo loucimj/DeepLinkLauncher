@@ -31,6 +31,7 @@
 		<string>pinterest</string>
 		<string>vnd.youtube</string>
 		<string>linkedin</string>
+        <string>slack</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
