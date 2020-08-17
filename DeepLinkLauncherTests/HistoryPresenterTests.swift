@@ -12,6 +12,10 @@ import Nimble
 @testable import DeepLinkLauncher
 
 fileprivate class MockHistoryPresenterDelegate: HistoryPresenterDelegate {
+    func didRemove(url: URL) {}
+    
+    func didRemoveAllLinks() {}
+    
     
     var urls: [URL] = []
     var launchedURL: URL?

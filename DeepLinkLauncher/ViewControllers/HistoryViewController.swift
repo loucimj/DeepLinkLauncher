@@ -104,15 +104,42 @@ extension HistoryViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
 
     }
-    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteItem = UIContextualAction(style: .destructive, title: "Delete") { [weak self]  (contextualAction, view, boolValue) in
+            guard let self = self else { return }
+            self.delete(indexPath: indexPath)
+        }
+        let editItem = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            self.edit(indexPath: indexPath)
+        }
+        
+        deleteItem.image = UIImage.delete
+        editItem.image = UIImage.edit
+        editItem.backgroundColor = UIColor.textFieldTextColor
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
+
+        return swipeActions
+    }
+    private func delete(indexPath: IndexPath) {
+        guard indexPath.row < urls.count else { return }
+        historyPresenter?.remove(url: urls[indexPath.row])
+    }
+    private func edit(indexPath: IndexPath) {
+        guard indexPath.row < urls.count else { return }
+        historyPresenter?.edit(url: urls[indexPath.row])
+    }
 }
 extension HistoryViewController: HistoryPresenterDelegate {
     func didRemove(url: URL) {
         showAlertWithSucccess(message: "Deleted " + url.absoluteString)
+        getData()
     }
     
     func didRemoveAllLinks() {
         showAlertWithSucccess(message: "Deleted all links")
+        getData()
     }
     
     func didReceiveUrls(urls: [URL]) {
